@@ -293,11 +293,12 @@ export default class GridItem extends React.Component {
       switch (handlerName) {
         case 'onDragStart': {
           // ToDo this wont work on nested parents
-          const parentRect = node.offsetParent.getBoundingClientRect();
-          const clientRect = node.getBoundingClientRect();
-          newPosition.left = clientRect.left - parentRect.left;
-          newPosition.top = clientRect.top - parentRect.top;
-          this.setState({dragging: newPosition});
+          const {x, y, w, h} = this.props;
+          const pos = this.calcPosition(x, y, w, h, this.state);
+          this.setState({dragging: {
+            left: pos.left,
+            top: pos.top,
+          }});
           break;
         }
         case 'onDrag':
