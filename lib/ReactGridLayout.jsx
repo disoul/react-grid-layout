@@ -416,7 +416,7 @@ export default class ReactGridLayout extends React.Component {
         isResizable={resizable}
         useCSSTransforms={useCSSTransforms && mounted}
         usePercentages={!mounted}
-
+        scale={child.props.scale}
         w={l.w}
         h={l.h}
         x={l.x}
